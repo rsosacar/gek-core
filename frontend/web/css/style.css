@@ -8647,7 +8647,7 @@ table.check_out_table {
 	position: relative;
 }
 #footer:after {
-    height: 5px;
+    /*height: 5px;*/
     width: 100%;
     top: 0;
     left: 0;
@@ -8660,7 +8660,7 @@ table.check_out_table {
     display: block;
     left: 0;
     position: absolute;
-    top: 5px;
+    top: 0;
     width: 100%;
     background: url("../images/footer_line.png") repeat scroll 0 0;
     height: 1px;
