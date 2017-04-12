@@ -26,8 +26,17 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="light_header">
+<body class="preloader2 light_header">
 <?php $this->beginBody() ?>
+
+<div id="preloader">
+	<div class="preloadspin1">
+		<div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div>
+	</div>
+	<div class="preloadspin2">
+		<div class="sk-dot1"></div><div class="sk-dot2"></div>
+	</div>
+</div>
 
 <div class="wrap">
     <?php

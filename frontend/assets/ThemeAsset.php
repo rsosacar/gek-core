@@ -31,9 +31,9 @@ class ThemeAsset extends AssetBundle
     public $js = [
         'js/jquery.themepunch.tools.min.js',
         'js/jquery.themepunch.revolution.min.js',
-        'js/plugins.js',
-        'js/isotope.pkgd.min.js',
         'js/functions.js',
+//        'js/plugins.js',
+//        'js/isotope.pkgd.min.js',
 //        'js/boxesFx.js',
 //        'js/camera.min.js',
 //        'js/chart.min.js',
