@@ -13,6 +13,7 @@ class UserForm extends User
 {
 //    public $username;
 //    public $email;
+    public $role;
     public $password;
     public $new_password;
 
@@ -49,6 +50,8 @@ class UserForm extends User
                 }
             ],
 
+            ['role', 'required'],
+
             ['password', 'required', 'on' => 'insert'],
             ['password', 'string', 'min' => 6],
 
@@ -64,7 +67,7 @@ class UserForm extends User
      */
     public function create()
     {
-        if(!$this->validate()){
+        if (!$this->validate()) {
             return null;
         }
 
@@ -74,6 +77,13 @@ class UserForm extends User
         $user->setPassword($this->password);
         $user->generateAuthKey();
 
-        return $user->save() ? $user : null;
+        if ($user->save()) {
+            $auth = Yii::$app->authManager;
+            $authorRole = $auth->getRole($this->role);
+            $auth->assign($authorRole, $user->getId());
+
+            return $user;
+        } else
+            return null;
     }
 }
