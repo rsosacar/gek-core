@@ -124,8 +124,8 @@ class UsersController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-            if ($model->new_password != '')
-                $model->setPassword($model->new_password);
+            if ($model->password != '')
+                $model->setPassword($model->password);
 
             $model->update();
 

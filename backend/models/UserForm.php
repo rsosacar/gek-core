@@ -1,21 +1,18 @@
 <?php
 namespace backend\models;
 
-
 use Yii;
 use common\models\User;
-
 
 /**
  * Create User form
  */
 class UserForm extends User
 {
-//    public $username;
-//    public $email;
-    public $role;
+    //    public $username;
+    //    public $email;
+    //    public $role;
     public $password;
-    public $new_password;
 
     /**
      * @inheritdoc
@@ -30,10 +27,10 @@ class UserForm extends User
                 'username',
                 'unique',
                 'targetClass' => '\common\models\User',
-                'message' => 'This username has already been taken.',
-                'when' => function($model) {
+                'message'     => 'This username has already been taken.',
+                'when'        => function ($model) {
                     return $this->getOldAttribute('username') !== $model->username;
-                }
+                },
             ],
 
             ['email', 'trim'],
@@ -44,19 +41,16 @@ class UserForm extends User
                 'email',
                 'unique',
                 'targetClass' => '\common\models\User',
-                'message' => 'This email address has already been taken.',
-                'when' => function($model) {
+                'message'     => 'This email address has already been taken.',
+                'when'        => function ($model) {
                     return $this->getOldAttribute('email') !== $model->email;
-                }
+                },
             ],
 
             ['role', 'required'],
 
             ['password', 'required', 'on' => 'insert'],
             ['password', 'string', 'min' => 6],
-
-//            ['new_password', 'required'],
-            ['new_password', 'string', 'min' => 6],
         ];
     }
 
@@ -73,6 +67,7 @@ class UserForm extends User
 
         $user = new User();
         $user->username = $this->username;
+        $user->role = $this->role;
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();

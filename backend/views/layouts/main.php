@@ -88,7 +88,7 @@ AppAsset::register($this);
 					<div class="sidebar-category sidebar-category-visible">
 						<div class="category-content p0">
 							<?php
-							( isset( Yii::$app->authManager->getRolesByUser(Yii::$app->user->id)['admin'] ) )
+							(Yii::$app->user->identity->role == 'admin')
 								? $items = [
 									['label' => '<i class="icon-home4"></i>Inicio', 'url' => ['site/index']],
 									['label' => '<i class="icon-user"></i>Usuarios', 'url' => ['users/index']],
