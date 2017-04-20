@@ -27,18 +27,23 @@ $this->title = 'Geknology';
                 <legend class="text-bold"><?= Html::encode('Información de la Empresa') ?></legend>
                 <div class="form-group mb40">
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-5">
                             <?= $form->field($model, 'domain')->textInput() ?>
                         </div>
-                        <div class="col-lg-3">
-                            <?= $form->field($model, 'company')->textInput() ?>
-                        </div>
-                        <div class="col-lg-3">
-                            <?= $form->field($model, 'rif')->textInput() ?>
+                        <div class="col-lg-5">
+                            <?= $form->field($model, 'title')->textInput() ?>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-9">
+                        <div class="col-lg-5">
+                            <?= $form->field($model, 'company')->textInput() ?>
+                        </div>
+                        <div class="col-lg-5">
+                            <?= $form->field($model, 'rut')->textInput() ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10">
                             <?= $form->field($model, 'address')->textarea() ?>
                         </div>
                     </div>

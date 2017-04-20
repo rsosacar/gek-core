@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m170414_204335_web_config extends Migration
+class m170414_204335_system_config extends Migration
 {
     public function up()
     {
@@ -15,7 +15,7 @@ class m170414_204335_web_config extends Migration
             'id'             => $this->primaryKey(),
             'domain'         => $this->string()->notNull(),
             'company'        => $this->string()->notNull(),
-            'rif'            => $this->string()->notNull(),
+            'rut'            => $this->string()->notNull(),
             'title'          => $this->string()->notNull(),
             'name'           => $this->string()->notNull(),
             'phone'          => $this->string()->null(),
@@ -48,7 +48,7 @@ class m170414_204335_web_config extends Migration
         $this->insert('{{%gsystem_config}}', [
             'domain'         => 'geknology.com',
             'company'        => 'Geknology',
-            'rif'            => 'J-12345678-9',
+            'rut'            => 'J-12345678-9',
             'title'          => 'Mi Web',
             'name'           => 'Daniel Sosa',
             'phone'          => '+582121234567',

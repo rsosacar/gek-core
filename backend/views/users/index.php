@@ -58,7 +58,13 @@ $this->title = 'Geknology';
                     'attribute' => 'status',
                     'format'    => 'raw',
                     'value'     => function ($model) {
-                        return Html::a($model->status, ['update', 'id' => $model->id]);
+                        $check = ($model->status == 1) ? "checked='checked'" : null;
+                        $_csrf = Yii::$app->request->getCsrfToken();
+                        $disabled = ($model->id == 1) ? 'disabled' : '';
+
+                        return "<div class='switchery-xs m0'>
+                                    <input id='status-$model->id' type='checkbox' class='switchery switchStatus' _csrf='$_csrf' $check $disabled>
+                                </div>";
                     },
                 ],
                 [
@@ -71,3 +77,4 @@ $this->title = 'Geknology';
         ?>
     </div>
 </div>
+<?php $this->registerJs('listenerChangeStatus();') ?>

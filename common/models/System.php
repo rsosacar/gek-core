@@ -5,7 +5,7 @@ namespace common\models;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 
-class WebConfig extends ActiveRecord
+class System extends ActiveRecord
 {
     /**
      * @inheritdoc

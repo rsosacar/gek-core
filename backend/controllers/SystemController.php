@@ -1,12 +1,12 @@
 <?php
 
-namespace backend\controllers;
+namespace backend\controllers\System;
 
-use common\models\WebConfig;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use common\models\System;
 
 /**
  * System Controller
@@ -64,7 +64,7 @@ class SystemController extends Controller
         if (Yii::$app->user->isGuest)
             return $this->redirect(['login']);
 
-        $model = WebConfig::findOne(1);
+        $model = System::findOne(1);
 
         if ($model->load(Yii::$app->request->post())) {
 
