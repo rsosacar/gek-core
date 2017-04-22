@@ -16,6 +16,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'js/yii_overrides.js',
         'js/script.js',
     ];
     public $depends = [
@@ -23,6 +24,7 @@ class AppAsset extends AssetBundle
         'app\assets\ThemeAsset',
         'app\assets\TetherAsset',
         'app\assets\BootstrapAsset',
+        'app\assets\SweetAlertAsset',
         'app\assets\FontAwesomeAsset',
     ];
 }
