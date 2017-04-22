@@ -1,7 +1,6 @@
 <?php
 namespace backend\controllers;
 
-
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -9,7 +8,6 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use backend\models\UserForm;
 use common\models\User;
-
 
 /**
  * Users controller
@@ -30,9 +28,9 @@ class UsersController extends Controller
                         'allow'   => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'profile', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'profile', 'create', 'update', 'delete', 'logout', 'status'],
                         'allow'   => true,
-                        'roles'   => ['@'],
+                        'roles'   => ['admin'],
                     ],
                 ],
             ],
@@ -64,7 +62,7 @@ class UsersController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user->isGuest)
+        if (Yii::$app->user->isGuest)
             return $this->redirect(['login']);
 
         $dataProvider = new ActiveDataProvider([
@@ -86,7 +84,7 @@ class UsersController extends Controller
      */
     public function actionProfile()
     {
-        if(Yii::$app->user->isGuest)
+        if (Yii::$app->user->isGuest)
             return $this->redirect(['login']);
 
         return $this->render('profile');
@@ -99,13 +97,13 @@ class UsersController extends Controller
      */
     public function actionCreate()
     {
-        if(Yii::$app->user->isGuest)
+        if (Yii::$app->user->isGuest)
             return $this->redirect(['login']);
 
         $model = new UserForm();
-        
-        if($model->load(Yii::$app->request->post())){
-            if($model->create()){
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->create()) {
                 return $this->redirect(['index']);
             }
         }
@@ -117,7 +115,7 @@ class UsersController extends Controller
 
     /**
      * Displays User Update Form.
-     * 
+     *
      * @return string
      */
     public function actionUpdate($id)
@@ -126,8 +124,8 @@ class UsersController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
 
-            if($model->new_password != '')
-                $model->setPassword($model->new_password);
+            if ($model->password != '')
+                $model->setPassword($model->password);
 
             $model->update();
 
@@ -148,12 +146,34 @@ class UsersController extends Controller
     {
         $model = User::find()->where(['id' => $id])->one();
 
-        if($model->delete()){
+        if ($model->delete())
             return $this->redirect(['index']);
-        }
 
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Changes UserStatus.
+     *
+     * @return string
+     */
+    public function actionStatus()
+    {
+        if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+
+            $model = UserForm::findOne($data['id']);
+
+            if ($model->status)
+                $model->status = 0;
+            else
+                $model->status = 1;
+
+            $model->save();
+        }
+//        return $this->refresh();
+        return null;
     }
 }

@@ -13,6 +13,18 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+//        'assetManager' => [
+//            'bundles' => [
+//                'yii\bootstrap\BootstrapAsset'       => [
+//                    'sourcePath' => null,
+//                    'css'        => [],
+//                ],
+//                'yii\bootstrap\BootstrapPluginAsset' => [
+//                    'sourcePath' => null,
+//                    'js'         => [],
+//                ],
+//            ],
+//        ],
         'request' => [
             'csrfParam' => '_csrf-backend',
 //            'baseUrl' => '',
@@ -43,6 +55,9 @@ return [
             'showScriptName' => false,
             'rules' => [
             ],
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
     ],
     'params' => $params,
