@@ -66,12 +66,12 @@
 ================================================== */
 
 body {
-	color:#777;
+	color:#777 !important;
 	background: #fefefe;
 }
 
 blockquote small {
-	color:inherit;
+	color:inherit !important;
 }
 h1, h2, h3, h4, h5, h6 {
 	color:#333;
@@ -146,7 +146,7 @@ ul.iconsList li a:hover, ul.iconsList i {
 /*** buttons ***/
 .btn {
     background: none repeat scroll 0 0 #F7F7F7;
-    border-bottom: 4px solid rgba(150, 150, 150, 0.25);
+    border-bottom: 4px solid rgba(150, 150, 150, 0.25) !important;
     color: #111111;
 }
 
@@ -371,7 +371,7 @@ ul.quickMenu li a:hover {color:#fff;}
 footer {
 	color:#444;
 	background:#222;
-	border-top:1px solid #555s;
+	border-top:1px solid #555;
 }
 footer h1,footer h2,footer h3,footer h4{color:#fff; font-weight:300;}
 #footerRights {
@@ -639,9 +639,9 @@ section#projectDescription {
 	-moz-box-shadow:none;
 }
 .form-control {
-	color: #444;
-	background-color:#ededed;
-    border:none;
+	color: #444 !important;
+	background-color:#ededed !important;
+    border:none !important;
 }
 .error {color: #B94A48;
 background-color: #F2DEDE;

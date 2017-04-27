@@ -527,9 +527,9 @@ blockquote p {
 	display:inline;
 }
 blockquote small, .ctaBox blockquote small{
-	font-size:50%;
-	display:inline-block;
-	line-height: 1em;
+	font-size:50% !important;
+	display:inline-block !important;
+	line-height: 1em !important;
 }
 blockquote:before {
 	content:'\e928';
@@ -604,8 +604,8 @@ hr {
 	border:none;
 	}
 .btn-lg {
-	padding:18px 23px;
-	font-size:22px;
+	padding:18px 23px !important;
+	font-size:22px !important;
 }
 .btn-sm {
 	padding:10px 13px;

@@ -2,9 +2,11 @@
 
 /* @var $this yii\web\View */
 
+use yii\captcha\Captcha;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
-$this->title = 'My Yii Application';
+$this->title = 'Geknology - wHercules';
 ?>
 <div id="index" class="site-index">
 
@@ -135,7 +137,7 @@ $this->title = 'My Yii Application';
             <section class="pt30 pb30">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 pl30 pr30">
                             <h4>Address:</h4>
                             <address>
                                 Himalaya Company<br/>
@@ -147,39 +149,38 @@ $this->title = 'My Yii Application';
                                 615.987.1234<br/>
                             </address>
                         </div>
-                        <form method="post" action="http://fat-catz-bootstrap3-website-template.little-neko.com/files/js-plugin/neko-contact-ajax-plugin/php/form-handler.php" id="contactfrm" role="form">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name"  title="Please enter your name (at least 2 characters)"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" title="Please enter a valid email address"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input name="phone" class="form-control required digits" type="tel" id="phone" size="30" value="" placeholder="Enter email phone" title="Please enter a valid phone number (at least 10 characters)">
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="comments">Comments</label>
-                                    <textarea name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder="Enter your message…" title="Please enter your message (at least 10 characters)"></textarea>
-                                </div>
-                                <fieldset class="clearfix securityCheck">
-                                    <legend>Security</legend>
+                        <div class="col-sm-8">
+                            <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <img src="js-plugin/neko-contact-ajax-plugin/php/image.html" alt="Image verification"/>
-                                        <input class="required "  id="verify" name="verify" type="text" >
+                                        <?= $form->field($model, 'name') ?>
                                     </div>
-                                </fieldset>
-                            </div>
-                            <div class="col-md-8 col-md-offset-4">
-                                <div class="result"></div>
-                                <button name="submit" type="submit" class="btn btn-lg" id="submit"> Submit</button>
-                            </div>
-                        </form>
+                                    <div class="form-group">
+                                        <?= $form->field($model, 'email') ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <?= $form->field($model, 'subject') ?>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <?= $form->field($model, 'body')->textarea(['rows' => 3]) ?>
+                                    </div>
+                                    <fieldset class="clearfix securityCheck">
+                                        <legend>Security</legend>
+                                        <div class="form-group">
+                                            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                                                'template' => '<div class="row"><div class="col-lg-6">{image}</div><div class="col-lg-6">{input}</div></div>',
+                                            ])->label(false) ?>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="result"></div>
+                                    <?= Html::submitButton('Submit', ['class' => 'btn btn-lg', 'name' => 'contact-button']) ?>
+                                </div>
+                            <?php ActiveForm::end(); ?>
+                        </div>
                     </div>
                 </div>
             </section>
