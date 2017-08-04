@@ -145,7 +145,7 @@ class ActionColumn extends Column
         $this->initDefaultButton('view', 'eye-open');
         $this->initDefaultButton('update', 'pencil');
         $this->initDefaultButton('delete', 'trash', [
-            'data-confirm' => Yii::t('yii', '¿Seguro que deseas borrar este elemento?'),
+            'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
             'data-method' => 'post',
         ]);
     }
@@ -163,13 +163,13 @@ class ActionColumn extends Column
             $this->buttons[$name] = function ($url, $model, $key) use ($name, $iconName, $additionalOptions) {
                 switch ($name) {
                     case 'view':
-                        $title = Yii::t('yii', 'Ver');
+                        $title = Yii::t('yii', 'View');
                         break;
                     case 'update':
-                        $title = Yii::t('yii', 'Actualizar');
+                        $title = Yii::t('yii', 'Update');
                         break;
                     case 'delete':
-                        $title = Yii::t('yii', 'Borrar');
+                        $title = Yii::t('yii', 'Delete');
                         break;
                     default:
                         $title = ucfirst($name);
@@ -189,7 +189,7 @@ class ActionColumn extends Column
      * Creates a URL for the given action and model.
      * This method is called for each button and each row.
      * @param string $action the button name (or action ID)
-     * @param \yii\db\ActiveRecord $model the data model
+     * @param \yii\db\ActiveRecordInterface $model the data model
      * @param mixed $key the key associated with the data model
      * @param int $index the current row index
      * @return string the created URL
